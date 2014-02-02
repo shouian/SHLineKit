@@ -37,16 +37,17 @@
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"line://"]];
 }
 
-+ (BOOL)shareLineWithMessage:(NSString *)message
++ (void)shareLineWithMessage:(NSString *)message
 {
-    return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"line://msg/text/%@", [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"line://msg/text/%@", [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
 }
 
-+ (BOOL)shareLineWithImage:(UIImage *)image
++ (void)shareLineWithImage:(UIImage *)image
 {
     UIPasteboard *pasteboard = [UIPasteboard generatePasteLineBoard];
     [pasteboard setData:UIImageJPEGRepresentation(image, 1.0f) forPasteboardType:@"public.jpeg"];
-    return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"line://msg/image/%@", pasteboard.name]]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"line://msg/image/%@", pasteboard.name]]];
 }
 
 @end

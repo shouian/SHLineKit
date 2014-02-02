@@ -12,7 +12,7 @@
 
 + (BOOL)isUserInstallLine;
 
-+ (BOOL)shareLineWithMessage:(NSString *)message;
-+ (BOOL)shareLineWithImage:(UIImage *)image;
++ (void)shareLineWithMessage:(NSString *)message;
++ (void)shareLineWithImage:(UIImage *)image;
 
 @end
